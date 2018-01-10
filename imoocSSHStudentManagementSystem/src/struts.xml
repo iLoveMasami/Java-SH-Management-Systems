@@ -6,5 +6,14 @@
 <struts>
 	<package name="default" extends="struts-default" namespace="/">
 	</package>
+   <package name="users" namespace="/users" extends="default">
+   	<action name="*_*" class="com.southeast.iLoveMasami.action.{1}Action" method="{2}">
+   		<result name="login_success">/jsp/users/Users_login_success.jsp</result>
+   		<result name="login_failure">/jsp/users/Users_login.jsp</result>   	
+   		<result name="logout_success">/jsp/users/Users_login.jsp</result>
+   		<result name="input">/jsp/users/Users_login.jsp</result>
+   	</action>
    
+   
+   </package>
 </struts>
