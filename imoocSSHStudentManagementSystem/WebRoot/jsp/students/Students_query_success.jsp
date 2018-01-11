@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/default.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css" />
 <style type="text/css">
 * {
     background: none repeat scroll 0 0 transparent;
@@ -80,13 +80,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="navi">
 	<div id='naviDiv'>
 		<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
-		<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;<a href="<%=path%>/students/Students_query.action">学生列表</a><span>&nbsp;
+		<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;<a href="<%=path%>/jsp/students/Students_query.action">学生列表</a><span>&nbsp;
 	</div>
 </div>
 <div id="tips">
 	<div id="buttonGroup">
 		<div class="button" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'">
-			<a href="<%=path%>/students/Students_add.jsp">添加学生</a>
+			<a href="<%=path%>/jsp/students/Students_add.jsp">添加学生</a>
 		</div>
 		<div class="button" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'">
 			<a>查找学生</a>

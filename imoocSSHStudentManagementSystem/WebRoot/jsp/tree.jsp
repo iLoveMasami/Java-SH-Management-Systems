@@ -8,22 +8,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<title>导航树</title>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	<style type="text/css">@import url('components/dtree/dtree.css');</style>
-	<script type="text/javascript">var dtreeIconBasePath = "components/dtree";</script>
-	<script type="text/javascript"  src="components/dtree/dtree.js"></script>
+	<style type="text/css">@import url('${pageContext.request.contextPath}/components/dtree/dtree.css');</style>
+	<script type="text/javascript">var dtreeIconBasePath = "${pageContext.request.contextPath}/components/dtree";</script>
+	<script type="text/javascript"  src="${pageContext.request.contextPath}/components/dtree/dtree.js"></script>
 </head>
 <body>
 <script type="text/javascript"> 
 var treeMenu = [
 	{ level:1, name:"学生管理"},
-	{ level:2, name:"学生列表", ico:"images/icon_default.gif",link:"students/Students_query.action"},
-	{ level:1, name:"教师管理"},
-	{ level:2, name:"教师列表", ico:"images/icon_default.gif",link:"role_list.html"},
+	{ level:2, name:"学生列表", ico:"${pageContext.request.contextPath}/images/icon_default.gif",link:"Students_query.action"},
+	{ level:2, name:"教师列表", ico:"${pageContext.request.contextPath}/images/icon_default.gif",link:"role_list.html"},
 	{ level:1, name:"信息管理"},
-	{ level:2, name:"新闻管理", ico:"images/icon_default.gif",link:"news_list.html"},
-	{ level:2, name:"公告管理", ico:"images/icon_default.gif",link:"bulletin_list.html"},
-	{ level:1, name:"系统邮件", ico:"images/icon_default.gif"},
-	{ level:1, name:"网络文件", ico:"images/icon_default.gif",link:"complaint_list.html"}
+	{ level:2, name:"新闻管理", ico:"${pageContext.request.contextPath}/images/icon_default.gif",link:"news_list.html"},
+	{ level:2, name:"公告管理", ico:"${pageContext.request.contextPath}/images/icon_default.gif",link:"bulletin_list.html"},
+	{ level:1, name:"系统邮件", ico:"${pageContext.request.contextPath}/images/icon_default.gif"},
+	{ level:1, name:"网络文件", ico:"${pageContext.request.contextPath}/images/icon_default.gif",link:"complaint_list.html"}
 ];
 </script>
 <style>
