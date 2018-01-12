@@ -92,8 +92,25 @@ public class StudentsDaoImpl implements StudentsDao {
 	@Override
 	public boolean updateStudents(Students s) {
 
-		return false;
+		Transaction tx=null;		
+		try{
+			Session session=MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+			session.update(s);
+			tx.commit();
+			return true;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+		}
+		finally{
+			if(tx!=null)
+				tx=null;
+		}
 	}
+	
 
 	@Override
 	public boolean deleteStudents(String sid) {

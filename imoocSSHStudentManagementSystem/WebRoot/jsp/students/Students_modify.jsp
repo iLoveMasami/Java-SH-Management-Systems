@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td>出生日期：</td>
     <td><input name="birthday" type="text" id="control_date" size="20"
-      maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" 
+      maxlength="10" onclick="new Calendar().show(this);" 
       value="<s:date name="#session.modify_students.birthday" format="yyyy-MM-dd"/>"
       />
     </td>

@@ -71,4 +71,25 @@ public class StudentsAction extends SuperAction{
 		session.setAttribute("modify_students", s);
 		return "modify_success";
 	}
+	//保存修改的动作
+	public String save()
+	{
+		StudentsDao sdao = new StudentsDaoImpl();
+		Students s = new Students();
+		s.setSid(request.getParameter("sid"));
+		s.setSname(request.getParameter("sname"));
+		s.setGender(request.getParameter("gender"));
+		String dateString = request.getParameter("birthday");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date;
+		try {
+			date = sdf.parse(dateString);
+			s.setBirthday(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}		
+		s.setAddress(request.getParameter("address"));
+		sdao.updateStudents(s);
+		return "save_success";
+	}
 }
