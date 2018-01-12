@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/default.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/default.css" />
 <style type="text/css">
 * {
     background: none repeat scroll 0 0 transparent;
@@ -80,8 +80,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div id="navi">
 	<div id='naviDiv'>
-		<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
-		<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;<a href="<%=path%>/students/Students_query.action">学生列表</a><span>&nbsp;
+		<span><img src="${pageContext.request.contextPath}/images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
+		<span><img src="${pageContext.request.contextPath}/images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;<a href="<%=path%>/Students_query.action">学生列表</a><span>&nbsp;
 	</div>
 </div>
 <div id="tips">
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <br>
 <br>
 
-<form name="modifyForm" action="<%=path%>/students/Students_save.action" method="post">
+<form name="modifyForm" action="<%=path%>/Students_save.action" method="post">
 <table width="400" >
   <tr>
     <td width="30%">学号：</td>

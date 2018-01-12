@@ -116,11 +116,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<s:iterator value="#session.students_list" var="stu">
 	<tr class="list">
 		<td><s:property value="#stu.sid"/></td>
-		<td><a href="<%=path%>/students/Students_modify.action?sid=<s:property value="#stu.sid"/>"><s:property value="#stu.sname"/></a></td>
+		<td><a href="<%=path%>/Students_modify.action?sid=<s:property value="#stu.sid"/>"><s:property value="#stu.sname"/></a></td>
 		<td><s:property value="#stu.gender"/></td>
 		<td><s:date name="#stu.birthday" format="yyyy年MM月dd日"/></td>
 		<td><s:property value="#stu.address"/></td>
-		<td><a href="<%=path%>/students/Students_delete.action?sid=<s:property value="#stu.sid"/>" onclick="javascript: return confirm('真的要删除吗？');">删除</a></td>
+		<td><a href="<%=path%>/Students_delete.action?sid=<s:property value="#stu.sid"/>" onclick="javascript: return confirm('真的要删除吗？');">删除</a></td>
 	</tr>
 	</s:iterator>
 	<!-- 遍历结束 -->

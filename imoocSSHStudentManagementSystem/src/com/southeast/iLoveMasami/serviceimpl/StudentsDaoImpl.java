@@ -46,13 +46,47 @@ public class StudentsDaoImpl implements StudentsDao {
 	@Override
 	public Students queryStudentsBySid(String sid) {
 
-		return null;
+		Transaction tx=null;
+		Students s = null;
+		try{
+			Session session=MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			s = (Students) session.get(Students.class, sid);			
+			
+			return s;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			
+			return s;
+		}
+		finally{
+			if(tx!=null)
+			{
+				tx = null;
+			}
+		}
 	}
 
 	@Override
 	public boolean addStudents(Students s) {
-
-		return false;
+		Transaction tx=null;
+		s.setSid(getNewSid());//设置学生的学号
+		try{
+			Session session=MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+			session.save(s);
+			tx.commit();
+			return true;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			return false;
+		}
+		finally{
+			if(tx!=null)
+				tx=null;
+		}
 	}
 
 	@Override
@@ -63,8 +97,68 @@ public class StudentsDaoImpl implements StudentsDao {
 
 	@Override
 	public boolean deleteStudents(String sid) {
-
-		return false;
+		Transaction tx=null;
+		try{
+			//获得会话对象
+			Session session=MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+			Students s=(Students) session.get(Students.class, sid);
+			session.delete(s);
+			tx.commit();
+			return true;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			tx.commit();
+			return false;
+		}
+		finally{
+			if(tx!=null)
+				tx=null;
+		}
+	}
+	
+	private String getNewSid()
+	{
+		Transaction tx=null;
+		String hql="";
+		String sid=null;
+		try{
+			Session session = MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+			//获得当前学生的最大编号
+			hql = "select max(id) from Students";
+			Query query = session.createQuery(hql);
+			sid = (String) query.uniqueResult();
+			if(sid==null||sid.isEmpty())
+			{
+				//给一个默认的最大编号
+				sid = "S001";
+			}
+			else{
+				int oldNum = Integer.parseInt(sid.substring(1));
+				oldNum++;
+				String newNum = String.valueOf(oldNum);
+				int numLen = newNum.length();
+				for(int i=0;i<3-numLen;++i)
+				{
+					newNum='0'+newNum;
+				}
+				sid = 'S' + newNum;
+			}
+			tx.commit();
+			return sid;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			tx.commit();
+			return null;
+		}
+		finally{
+			if(tx!=null)
+				tx=null;
+		}
 	}
 
 }
