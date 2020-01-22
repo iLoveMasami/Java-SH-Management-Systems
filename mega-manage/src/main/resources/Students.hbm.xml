@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--        package需要写上，不然找不到映射类-->
+<hibernate-mapping package="com.ilovemasami.entity">
+    <class name="com.ilovemasami.entity.Students" table="STUDENTS">
+        <id name="sid" type="java.lang.String">
+            <generator class="assigned" />
+        </id>
+        <property name="sname" type="java.lang.String">
+            <column name="sname" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="gender" />
+        </property>
+        <property name="birthday" type="date">
+            <column name="birthday" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -6,15 +6,17 @@
 	<session-factory>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/student_system</property>
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<!--		mysql8需要加上时区-->
+		<property name="connection.url">jdbc:mysql://localhost:3306/mega_student_system?useSSL=false&amp;serverTimezone=Asia/Shanghai</property>
+<!--		使用MySQL8Dialect创建InnonDB引擎的数据表，MySQLDialect则是MyIsam-->
+		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 
-		<mapping resource="com/southeast/iLoveMasami/entity/Students.hbm.xml" />
-		<mapping resource="com/southeast/iLoveMasami/entity/Users.hbm.xml" />
+		<mapping resource="Students.hbm.xml" />
+		<mapping resource="Users.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
