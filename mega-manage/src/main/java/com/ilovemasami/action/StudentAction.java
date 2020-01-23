@@ -28,9 +28,13 @@ public class StudentAction extends SuperAction {
 
   //删除学生动作
   public String delete() {
-    StudentService studentService = new StudentServiceImpl();
+
     //获得传过来的参数
     String sid = request.getParameter("sid");
+    if(sid == null || sid.isEmpty()) {
+      return "delete_failure";
+    }
+    StudentService studentService = new StudentServiceImpl();
     studentService.deleteStudent(sid);
     return "delete_success";
   }
