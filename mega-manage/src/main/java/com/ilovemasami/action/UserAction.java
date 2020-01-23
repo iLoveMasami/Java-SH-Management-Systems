@@ -39,8 +39,8 @@ public class UserAction extends SuperAction implements ModelDriven<Users> {
       this.addFieldError(MessageConstants.ErrorFiledName.usernameError, MessageConstants.getErrorTip(MessageConstants.ErrorFiledName.usernameError));
     }
     //判断密码信息
-    if ((user.getPassword() == null) || user.getPassword().length() < 4) {
-      this.addFieldError("passwordLengthError", "密码长度不能少于4位！！");
+    if ((user.getPassword() == null) || user.getPassword().length() < MessageConstants.Constants.passwordMinLength) {
+      this.addFieldError(MessageConstants.ErrorFiledName.passwordLengthError, MessageConstants.getErrorTip(MessageConstants.ErrorFiledName.passwordLengthError));
     }
   }
 

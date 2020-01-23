@@ -21,7 +21,8 @@ public class UserServiceImpl implements UserService {
     try {
       Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
       tx = session.beginTransaction();
-      hql = "from Users where username=? and password=?";
+      // 占位符更新 https://blog.csdn.net/Z_Dalao/article/details/84891149
+      hql = "from Users where username=?0 and password=?1";
       Query query = session.createQuery(hql);
       query.setParameter(0, u.getUsername());
       query.setParameter(1, u.getPassword());
