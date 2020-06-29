@@ -1,3 +1,7 @@
-.idea
 ../.idea
 ../target
+/.idea/
+_config.yml
+/mega-manage/.idea/
+/mega-manage/target/
+/SHStudentManagementSystem/.idea/
