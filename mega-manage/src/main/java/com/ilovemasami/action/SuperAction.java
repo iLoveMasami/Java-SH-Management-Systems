@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 public class SuperAction extends ActionSupport
         implements ServletRequestAware, ServletResponseAware, ServletContextAware {
 
-  //  private static final long serialVersionUID = 1L;
   protected HttpServletRequest request;
   protected HttpServletResponse response;
   protected HttpSession session;
