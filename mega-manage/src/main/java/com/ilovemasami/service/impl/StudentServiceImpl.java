@@ -3,24 +3,25 @@ package com.ilovemasami.service.impl;
 import com.ilovemasami.dao.HibernateSessionFactory;
 import com.ilovemasami.entity.Students;
 import com.ilovemasami.service.StudentService;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
-import java.util.List;
 
 /**
  * @author yuzhezhu
  * @date 2020/01/23
  **/
 public class StudentServiceImpl implements StudentService {
+
   @Override
   public List<Students> queryAllStudents() {
     Transaction tx = null;
     List<Students> list = null;
     String hql = "";
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       session.beginTransaction();
       hql = "from Students";
       Query query = session.createQuery(hql);
@@ -41,7 +42,8 @@ public class StudentServiceImpl implements StudentService {
     Transaction tx = null;
     Students s = null;
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       session.beginTransaction();
       s = (Students) session.get(Students.class, sid);
       return s;
@@ -60,7 +62,8 @@ public class StudentServiceImpl implements StudentService {
     Transaction tx = null;
     s.setSid(getNewSid());//设置学生的学号
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       tx = session.beginTransaction();
       session.save(s);
       tx.commit();
@@ -80,7 +83,8 @@ public class StudentServiceImpl implements StudentService {
   public boolean updateStudent(Students s) {
     Transaction tx = null;
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       tx = session.beginTransaction();
       session.update(s);
       tx.commit();
@@ -100,7 +104,8 @@ public class StudentServiceImpl implements StudentService {
   public boolean deleteStudent(String sid) {
     Transaction tx = null;
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       tx = session.beginTransaction();
       Students s = (Students) session.get(Students.class, sid);
       session.delete(s);
@@ -122,7 +127,8 @@ public class StudentServiceImpl implements StudentService {
     String hql = "";
     String sid = null;
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       tx = session.beginTransaction();
       //获得当前学生的最大编号
       hql = "select max(id) from Students";

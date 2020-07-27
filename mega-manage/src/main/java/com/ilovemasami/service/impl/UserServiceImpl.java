@@ -3,23 +3,24 @@ package com.ilovemasami.service.impl;
 import com.ilovemasami.dao.HibernateSessionFactory;
 import com.ilovemasami.entity.Users;
 import com.ilovemasami.service.UserService;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
-import java.util.List;
 
 /**
  * @author yuzhezhu
  * @date 2020/01/23
  **/
 public class UserServiceImpl implements UserService {
+
   @Override
   public boolean usersLogin(Users u) {
     Transaction tx = null;
     String hql = "";
     try {
-      Session session = HibernateSessionFactory.getInstance().getSessionFactory().getCurrentSession();
+      Session session = HibernateSessionFactory.getInstance().getSessionFactory()
+          .getCurrentSession();
       tx = session.beginTransaction();
       // 占位符更新 https://blog.csdn.net/Z_Dalao/article/details/84891149
       hql = "from Users where username=?0 and password=?1";
